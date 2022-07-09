@@ -5,7 +5,6 @@ const AddToDoForm = (props) => {
 	const handleAddToDo = (event) => {
 		event.preventDefault();
 		let todoTitle = event.target.title.value;
-		console.log(todoTitle);
 		props.onAddTodo(todoTitle);
 		event.target.reset();
 	};
@@ -20,4 +19,5 @@ const AddToDoForm = (props) => {
 		</form>
 	);
 };
+
 export default AddToDoForm;
