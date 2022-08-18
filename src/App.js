@@ -7,17 +7,28 @@ function App() {
 	const [todoList, setTodoList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(()=> {
-		new Promise((resolve, reject) => {
-			setTimeout(() => {
-				resolve({data:{todoList:JSON.parse(localStorage.getItem('savedTodoList'))}})
-			}, 2000)
-		})
-		.then((result) => { 
-			setTodoList(result.data.todoList)
+	useEffect(() => {
+		console.log(process.env.REACT_APP_AIRTABLE_BASE_ID)
+		fetch(
+			`https://api.airtable.com/v0/apptSjApBiwcQXbSb/Table1`, {
+				method:'GET',
+				headers: {
+					Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+				},
+			}
+		)
+		.then((response) => response.json())
+		.then((results)=> {
+			setTodoList(
+				results.records.map((record) => ({
+					title: record.fields.Title,
+					id: record.id,
+				}))
+			);
 			setIsLoading(false);
+			console.log(results.records);
 		})
-	})
+	},[])
 
 	useEffect(()=> {
 		if(!isLoading) {
@@ -40,7 +51,8 @@ function App() {
 			<h1>To-Do List</h1>
 			<AddToDoForm onAddTodo={addTodo} />
 			{ isLoading ? <p>Loading...</p> :
-			<TodoList todoList={todoList} onRemoveTodo={removeTodo}/>}
+			 <TodoList todoList={todoList} 
+			onRemoveTodo={removeTodo}/>}
 		</>
 	);
 }
