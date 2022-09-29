@@ -1,0 +1,15 @@
+html {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: aliceblue;
+}
+
+.listItem {
+  list-style: none;
+  padding-right: 12px;
+}
+
+button {
+  margin:5px;
+  border-radius: 5px;
+  padding: 5px 5px;
+}

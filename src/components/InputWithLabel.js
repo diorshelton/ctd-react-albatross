@@ -1,11 +1,11 @@
 import React from "react";
-import { useRef, useEffect} from "react";
+import { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const InputWithLabel = ({ children, todoTitle, onChange }) => {
-
 	const inputRef = useRef(" ");
 
-	 useEffect(() => {
+	useEffect(() => {
 		inputRef.current.focus();
 	});
 	return (
@@ -21,6 +21,12 @@ const InputWithLabel = ({ children, todoTitle, onChange }) => {
 			/>
 		</>
 	);
+};
+
+InputWithLabel.propTypes = {
+	children: PropTypes.string,
+	todoTitle: PropTypes.string,
+	onchange: PropTypes.func,
 };
 
 export default InputWithLabel;
