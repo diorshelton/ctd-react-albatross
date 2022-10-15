@@ -1,15 +1,19 @@
 html {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: aliceblue;
-}
-
-.listItem {
-  list-style: none;
-  padding-right: 12px;
+  color: rgb(14, 135, 241);
 }
 
 button {
-  margin:5px;
-  border-radius: 5px;
-  padding: 5px 5px;
+  margin: 5px;
+  border-radius: 6px;
+  padding: 5px 5px 5px 5px;
+  cursor: grab;
+}
+
+
+.listItem {
+  list-style: none;
+  padding:  .5rem .5rem .5rem .5rem;
+  margin: 1rem 1rem 1rem 1rem;
+  font-size: 1.2rem;
 }
