@@ -17,16 +17,15 @@ function App() {
 		})
 			.then((response) => response.json())
 			.then((results) => {
-				const tasks = results.records.sort((xTask, yTask) => {
-					if (xTask.fields.Title < yTask.fields.Title) {
-						return -1;
-					} else if (xTask.fields.Title === yTask.fields.Title) {
-						return 0;
-					} else {
-						return 1;
-					}
-				});
-				console.log(tasks);
+				// const tasks = results.records.sort((xTask, yTask) => {
+				// 	if (xTask.fields.Title < yTask.fields.Title) {
+				// 		return -1;
+				// 	} else if (xTask.fields.Title === yTask.fields.Title) {
+				// 		return 0;
+				// 	} else {
+				// 		return 1;
+				// 	}
+				// });
 
 				setTodoList(
 					results.records.map((record) => ({
